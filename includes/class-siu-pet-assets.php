@@ -142,14 +142,16 @@ class Siu_Pet_Assets {
 	 * Unregister default WooCommerce styles and blocks styles
 	 */
 	public function unregister_woocommerce_styles() {
-		wp_dequeue_style( 'woocommerce-general' );
-		wp_dequeue_style( 'woocommerce-layout' );
-		wp_dequeue_style( 'woocommerce-smallscreen' );
-		wp_dequeue_style( 'woocommerce_frontend_styles' );
-		wp_dequeue_style( 'woocommerce_fancybox_styles' );
-		wp_dequeue_style( 'woocommerce_chosen_styles' );
-		wp_dequeue_style( 'woocommerce_prettyPhoto_css' );
-		wp_dequeue_style( 'wc-blocks-style' );
+		if ( 'home' !== $this->check_site_condition() ) {
+			wp_dequeue_style( 'woocommerce-general' );
+			wp_dequeue_style( 'woocommerce-layout' );
+			wp_dequeue_style( 'woocommerce-smallscreen' );
+			wp_dequeue_style( 'woocommerce_frontend_styles' );
+			wp_dequeue_style( 'woocommerce_fancybox_styles' );
+			wp_dequeue_style( 'woocommerce_chosen_styles' );
+			wp_dequeue_style( 'woocommerce_prettyPhoto_css' );
+			wp_dequeue_style( 'wc-block-style' );
+		}
 		wp_dequeue_style( 'wp-block-library' );
 		wp_dequeue_style( 'wc-blocks-vendors-style' );
 
